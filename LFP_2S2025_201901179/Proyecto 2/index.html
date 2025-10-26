@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaTraductor - Traductor Java a Python</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1> JavaTraductor</h1>
+        </div>
+    </header>
+
+    <nav class="menu-bar">
+        <div class="container">
+            <ul class="menu">
+                <!-- Menú Archivo -->
+                <li class="dropdown">
+                    <button class="menu-btn"> Archivo</button>
+                    <div class="dropdown-content">
+                        <a href="#" id="btn-nuevo"> Nuevo</a>
+                        <a href="#" id="btn-abrir"> Abrir</a>
+                        <a href="#" id="btn-guardar"> Guardar</a>
+                        <a href="#" id="btn-guardar-python"> Guardar Python como</a>
+                        <hr>
+                        <a href="#" id="btn-salir"> Salir</a>
+                    </div>
+                </li>
+
+                <!-- Menú Traducir -->
+                <li class="dropdown">
+                    <button class="menu-btn"> Traducir</button>
+                    <div class="dropdown-content">
+                        <a href="#" id="btn-generar-traduccion"> Generar Traducción</a>
+                        <a href="#" id="btn-ver-tokens"> Ver Tokens</a>
+                        <a href="#" id="btn-ver-errores"> Ver Errores</a>
+                        
+                    </div>
+                </li>
+
+                <!-- Menú Ayuda -->
+                <li class="dropdown">
+                    <button class="menu-btn"> Ayuda</button>
+                    <div class="dropdown-content">
+                        <a href="#" id="btn-acerca-de"> Acerca de</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Área Principal de Trabajo -->
+    <main class="container">
+        <div class="editor-container">
+            <!-- Panel Izquierdo: Editor Java -->
+            <div class="editor-panel">
+                <div class="panel-header">
+                    <h3>Código Java (Entrada)</h3>
+                    <span class="file-name" id="java-filename">Sin título.java</span>
+                </div>
+                <textarea 
+                    id="java-editor" 
+                    class="code-editor" 
+                    placeholder="// Escribe o pega tu código Java aquí...&#10;public class MiPrograma {&#10;    public static void main(String[] args) {&#10;        // Tu código&#10;    }&#10;}"
+                    spellcheck="false"
+                ></textarea>
+                <div class="panel-footer">
+                    <span class="line-count">Líneas: <span id="java-lines">0</span></span>
+                </div>
+            </div>
+
+            <!-- Panel Derecho: Editor Python -->
+            <div class="editor-panel">
+                <div class="panel-header">
+                    <h3>Código Python (Salida)</h3>
+                    <span class="file-name" id="python-filename">Sin título.py</span>
+                </div>
+                <textarea 
+                    id="python-editor" 
+                    class="code-editor" 
+                    placeholder="# El código Python traducido aparecerá aquí..."
+                    readonly
+                    spellcheck="false"
+                ></textarea>
+                <div class="panel-footer">
+                    <span class="line-count">Líneas: <span id="python-lines">0</span></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Área de Mensajes/Logs -->
+        <div class="console-container">
+            <div class="console-header">
+                <h4>Consola de Mensajes</h4>
+                <button id="btn-limpiar-consola" class="btn-small">Limpiar</button>
+            </div>
+            <div id="console" class="console">
+                <p class="console-info">Bienvenido a JavaBridge. Listo para traducir código...</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal para Reportes -->
+    <div id="modal-reporte" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Input oculto para cargar archivos -->
+    <input type="file" id="file-input" accept=".java" style="display: none;">
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/analizador_lexico.js"></script>
+    <script src="js/parser.js"></script>
+    <script src="js/traductor.js"></script>
+    <script src="js/reportes.js"></script>
+    <script src="js/simulator.js"></script>
+</body>
+</html>
